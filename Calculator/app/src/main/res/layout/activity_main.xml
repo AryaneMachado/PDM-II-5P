@@ -14,7 +14,7 @@
         android:id="@+id/txt_expressao"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:text=""
+        android:text="Inserir expressão"
         android:textColor="@color/black"
         android:textSize="40sp"
         android:gravity="end"

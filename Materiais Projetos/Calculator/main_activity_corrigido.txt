@@ -3,17 +3,16 @@ package com.aryane.calculator;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener { // Implementando interface de Click
+import net.objecthunter.exp4j.Expression;
+import net.objecthunter.exp4j.ExpressionBuilder;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button numeroZero, numeroUm, numeroDois, numeroTres, numeroQuatro,
             numeroCinco, numeroSeis, numeroSete, numeroOito, numeroNove,
@@ -25,18 +24,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-
-        //        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-        //            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-        //            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-        //            return insets;
-        //        });
 
         IniciarComponentes();
         getSupportActionBar().hide();
 
+        // Setando os listeners para os botões numéricos e operadores
         numeroZero.setOnClickListener(this);
         numeroUm.setOnClickListener(this);
         numeroDois.setOnClickListener(this);
@@ -53,60 +46,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         multiplicacao.setOnClickListener(this);
         divisao.setOnClickListener(this);
 
-        botao_limpar.setOneClickListener(new View.OnClickListener(){
-
-            public void onClick(View v) {
-
-                txtExpressao.setText("");
-                txtResultado.setText("");
-            }
+        botao_limpar.setOnClickListener(v -> {
+            txtExpressao.setText("");
+            txtResultado.setText("");
         });
 
-        botao_backspace.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-
-                TextView expressao = findViewById(R.id.txt_expressao);
-                String string = expressao.getText().toString();
-
-                if (string.isEmpty()) {
-
-                    byte var0 = 0;
-                    int var1 = string.length() - 1;
-
-                    String txtExpressao = string.substring(var0, var1);
-                    txtExpressao.setText(txtExpressao);
-                    expressao.setText(txtExpressao);
-
-                }
-
-                txtResultado.setText("");
+        botao_backspace.setOnClickListener(v -> {
+            String string = txtExpressao.getText().toString();
+            if (!string.isEmpty()) {
+                String novaExpressao = string.substring(0, string.length() - 1);
+                txtExpressao.setText(novaExpressao);
             }
+            txtResultado.setText("");
         });
 
-        igual.setOnClickListener(new View.OnClickListener() {
+        igual.setOnClickListener(v -> {
+            try {
+                Expression expressao = new ExpressionBuilder(txtExpressao.getText().toString()).build();
+                double resultado = expressao.evaluate();
+                long longResult = (long) resultado;
 
-            @Override
-            public void onClick(View v) {
-
-                try {
-                    Expression expressao = new ExpressionBuilder(txtExpressao.getText().toString()).build();
-                    double resultado = expressao.evaluate();
-                    long longResult = (long) resultado;
-
-                    if(resultado == (double)longResult) {
-                        txtResultado.setText((CharSequence) String.valueOf(longResult));
-                    } else {
-                        txtResultado.setText((CharSequence) String.valueOf(resultado));
-                    }
-                } catch (Exception e) {
-                    // Declarar regras de Exceções
+                if (resultado == (double) longResult) {
+                    txtResultado.setText(String.valueOf(longResult));
+                } else {
+                    txtResultado.setText(String.valueOf(resultado));
                 }
+            } catch (Exception e) {
+                txtResultado.setText("Erro");
             }
         });
     }
-
-    // Setando todos os componentes
 
     private void IniciarComponentes() {
         numeroZero = findViewById(R.id.numero_zero);
@@ -121,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         numeroNove = findViewById(R.id.numero_nove);
         ponto = findViewById(R.id.ponto);
         soma = findViewById(R.id.soma);
+        subtracao = findViewById(R.id.subtracao);
         multiplicacao = findViewById(R.id.multiplicacao);
         divisao = findViewById(R.id.divisao);
         igual = findViewById(R.id.igual);
@@ -130,18 +100,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         botao_backspace = findViewById(R.id.btn_backspace);
     }
 
-    public void AcrescentarUmaExpressao(String string, boolean limpar_dados) {
-
-        if (txtResultado.getText().equals(" ")) {
-            txtExpressao.setText(" ");
+    public void AcrescentarUmaExpressao(String string, boolean limparDados) {
+        if (txtResultado.getText().toString().equals("")) {
+            txtExpressao.setText("");
         }
-        if (limpar_dados) {
-            txtResultado.setText(" ");
+
+        if (limparDados) {
+            txtResultado.setText("");
             txtExpressao.append(string);
         } else {
             txtExpressao.append(txtResultado.getText());
             txtExpressao.append(string);
-            txtResultado.setText(" ");
+            txtResultado.setText("");
         }
     }
 
@@ -186,9 +156,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 AcrescentarUmaExpressao("+", false);
                 break;
             case R.id.subtracao:
-                AcrescentarUmaExpressao("+", false);
-                break;
-            case R.id.soma:
                 AcrescentarUmaExpressao("-", false);
                 break;
             case R.id.multiplicacao:
