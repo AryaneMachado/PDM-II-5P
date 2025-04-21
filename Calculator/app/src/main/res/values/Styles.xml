@@ -16,14 +16,14 @@
   <!-- Botões Operações - Herda styles Container -->
 
   <style name="Operators_Button" parent="Container_Button">
-    <item name="android:backgroundTint">@color/pink</item>
+    <item name="android:background">@color/pink</item>
     <item name="android:textColor">@color/white</item>
   </style>
 
   <!-- Botões Numéricos - Herda styles Container -->
 
   <style name="Numbers_Button" parent="Container_Button">
-    <item name="android:backgroundTint">@color/white</item>
+    <item name="android:background">@drawable/botao_numero_clicado</item> <!-- Chama estado desenhado -->
     <item name="android:textColor">@color/black</item>
   </style>
 
