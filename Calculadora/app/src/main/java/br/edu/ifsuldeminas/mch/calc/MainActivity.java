@@ -279,7 +279,7 @@ public class MainActivity extends AppCompatActivity {
         return lastChar != '+' && lastChar != '-' && lastChar != '/' && lastChar != '*' && lastChar != '%' && lastChar != '.';
     }
 
-    public void continu           eExpression(char operator) {
+    public void continueExpression(char operator) {
         String expression = textViewUltimaExpressao.getText().toString();
         expression += textViewResultado.getText();
         expression += operator;
