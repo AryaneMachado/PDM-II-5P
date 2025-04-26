@@ -1,4 +1,4 @@
-package com.aryane.calculator;
+package com.aryane.calculator; // pacote que define a minha aplicação
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
@@ -9,13 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import de.congrace.exp4j.Calculable;
 import de.congrace.exp4j.ExpressionBuilder;
 
-
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    // minhas variáveis de instância:
     private Button numeroZero, numeroUm, numeroDois, numeroTres, numeroQuatro,
             numeroCinco, numeroSeis, numeroSete, numeroOito, numeroNove,
-            ponto, soma, subtracao, multiplicacao, divisao, igual, botaoLimpar;
+            ponto, soma, subtracao, multiplicacao, divisao, igual, porcentagem, botaoLimpar;
 
     private TextView txtExpressao, txtResultado;
     private ImageView botaoBackspace;
@@ -27,14 +26,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         IniciarComponentes();
         if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
+            getSupportActionBar().hide(); // lig variáveis com os componentes view
         }
 
         // Set listeners
-        setListeners();
+        setListeners(); // eventos
     }
 
-    private void setListeners() {
+    private void setListeners() { // aç de cada botão
         Button[] botoesNumericos = {
                 numeroZero, numeroUm, numeroDois, numeroTres, numeroQuatro,
                 numeroCinco, numeroSeis, numeroSete, numeroOito, numeroNove, ponto
@@ -48,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         subtracao.setOnClickListener(this);
         multiplicacao.setOnClickListener(this);
         divisao.setOnClickListener(this);
+        porcentagem.setOnClickListener(this);
 
         botaoLimpar.setOnClickListener(v -> {
             txtExpressao.setText("");
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void IniciarComponentes() {
-        numeroZero = findViewById(R.id.numero_zero);
+        numeroZero = findViewById(R.id.numero_zero); // ligações
         numeroUm = findViewById(R.id.numero_um);
         numeroDois = findViewById(R.id.numero_dois);
         numeroTres = findViewById(R.id.numero_tres);
@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         subtracao = findViewById(R.id.subtracao);
         multiplicacao = findViewById(R.id.multiplicacao);
         divisao = findViewById(R.id.divisao);
+        porcentagem = findViewById(R.id.porcentagem);
         igual = findViewById(R.id.igual);
         botaoLimpar = findViewById(R.id.btn_limpar);
         txtExpressao = findViewById(R.id.txt_expressao);
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @SuppressLint("NonConstantResourceId")
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v) { // id de cada click
         int id = v.getId();
 
         if (id == R.id.numero_zero) {
@@ -167,8 +168,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         } else if (id == R.id.divisao) {
             AcrescentarUmaExpressao("/", false);
-        }
-    }
 
+        } else if (id == R.id.porcentagem) {
+            AcrescentarUmaExpressao("/100" + "*", false);
+        }
+
+    }
 }
 
