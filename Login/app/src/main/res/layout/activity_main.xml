@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayoutMainId"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/textViewUserLoginId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/top_margin"
+        android:text="@string/main_user_login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextUserLoginId"
+        android:layout_height="@dimen/inputs_height"
+        android:layout_width="0dp"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/top_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:ems="10"
+        android:hint="@string/main_user_login"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUserLoginId" />
+
+    <TextView
+        android:id="@+id/textViewUserPWId"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/top_margin"
+        android:text="@string/main_user_pw"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUserLoginId" />
+
+    <EditText
+        android:id="@+id/editTextUserPWId"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/inputs_height"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/top_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:ems="10"
+        android:hint="@string/main_user_pw"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUserPWId" />
+
+    <Button
+        android:id="@+id/buttonUserLoginId"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/top_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:text="@string/main_button_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUserPWId" />
+
+    <Button
+        android:id="@+id/buttonMainUserRegisterId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/top_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:text="@string/main_user_register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonUserLoginId"
+        app:strokeColor="#9E1616" />
+
+    <Button
+        android:id="@+id/buttonMainUserForgotPWId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/top_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:backgroundTint="@color/white"
+        android:onClick="forgotPWClick"
+        android:text="@string/main_user_forgot_pw"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/buttonMainUserRegisterId"
+        app:layout_constraintTop_toBottomOf="@+id/buttonUserLoginId" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

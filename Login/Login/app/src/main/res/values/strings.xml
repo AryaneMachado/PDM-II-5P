@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Login</string>
+    <string name="user_name">Nome do Usuário</string>
+    <string name="main_user_login">Usuário</string>
+    <string name="main_user_pw">Senha</string>
+    <string name="main_button_login">Logar</string>
+    <string name="main_user_register">Cadastrar</string>
+    <string name="main_user_forgot_pw">Esqueci a senha</string>
+
+</resources>
