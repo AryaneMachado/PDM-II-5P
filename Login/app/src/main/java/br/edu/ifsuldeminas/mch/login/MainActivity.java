@@ -11,8 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String USER = "emerson";
-    private static final String PW = "1234";
+    private static final String USER = "aryane";
+    private static final String PW = "123";
 
     private static final String TAG = "br.edu.ifsuldeminas.mch.login";
 
@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
                 //toast.show();
 
-                Intent welcomeIntent = new Intent(getApplicationContext(), WelcomeActivity.class);
+                Intent welcomeIntent = new Intent(getApplicationContext(), WelcomeActivity.class); // fazendo pedido com Intent
 
-                // TODO
+                welcomeIntent.putExtra("nome_usuario", usuario);
 
                 startActivity(welcomeIntent);
 
