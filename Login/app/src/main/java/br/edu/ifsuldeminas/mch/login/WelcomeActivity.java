@@ -24,6 +24,8 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private static final String TAG = "br.edu.ifsuldeminas.mch.login.WelcomeActivity";
 
+    private Intent resultIntent;
+
     private static final int PIC_CODE = 1;
 
     @Override
@@ -52,6 +54,10 @@ public class WelcomeActivity extends AppCompatActivity {
             startActivityForResult(intentTakePic, PIC_CODE);
         });
 
+        resultIntent = new Intent();
+        resultIntent.putExtra("retorno", "Não tirou a foto!");
+        setResult(RESULT_OK, resultIntent);
+
     }
 
     @Override
@@ -61,11 +67,14 @@ public class WelcomeActivity extends AppCompatActivity {
         if(requestCode == PIC_CODE && data != null && resultCode == RESULT_OK) {
             Bundle bundle = data.getExtras();
 
+            // Bundle bundle = data.getExtras();
+
             Bitmap img = (Bitmap) bundle.get("data");
 
             ImageView imageView = findViewById(R.id.imageViewId);
             imageView.setImageBitmap(img);
 
+            resultIntent.putExtra("retorno", "Tirou a foto!");
         }
     }
 
@@ -104,5 +113,13 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onDestroy();
 
         Log.d(TAG, "Welcome.onDestroy");
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+
+        getOnBackPressedDispatcher().onBackPressed();
+
+        return true;
     }
 }

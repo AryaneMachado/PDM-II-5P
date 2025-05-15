@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,6 +18,12 @@ public class MainActivity extends AppCompatActivity {
     private static final String PW = "123";
 
     private static final String TAG = "br.edu.ifsuldeminas.mch.login";
+
+    private ActivityResultLauncher<String> bemVindoLaucher =
+            registerForActivityResult(new SimpleContract(), retorno -> {
+                Toast t = Toast.makeText(getApplicationContext(), "> " + retorno, Toast.LENGTH_LONG);
+                t.show();
+            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +47,13 @@ public class MainActivity extends AppCompatActivity {
 
                 //toast.show();
 
-                Intent welcomeIntent = new Intent(getApplicationContext(), WelcomeActivity.class); // fazendo pedido com Intent
+                //Intent welcomeIntent = new Intent(getApplicationContext(), WelcomeActivity.class); // fazendo pedido com Intent
 
-                welcomeIntent.putExtra("nome_usuario", usuario);
+                // welcomeIntent.putExtra("nome_usuario", usuario);
 
-                startActivity(welcomeIntent);
+                // startActivity(welcomeIntent);
+
+                bemVindoLaucher.launch(usuario);
 
 
             } else {
