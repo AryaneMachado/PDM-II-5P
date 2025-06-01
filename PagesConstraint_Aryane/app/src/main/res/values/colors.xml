@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="color_cabeçalho">#9806B4</color>
+    <color name="color_cabeçalho_series">#AD1436</color>
+    <color name="color_footer">#AC6AE7</color>
+    <color name="color_detalhes">#AC6AE7</color>
+    <color name="color_page_series">#474343</color>
+    <color name="red">#AD1436</color>
+
+</resources>

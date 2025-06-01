@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_page_series"
+    tools:context=".BlogPostActivity">
+
+    <!-- Cabeçalho -->
+
+    <TextView
+        android:id="@+id/textViewHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/color_cabeçalho"
+        android:padding="16dp"
+        android:text="@string/text_cabeçalho_series"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Nome da Série -->
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewNomeSerie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Friends"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:padding="8dp"
+        android:gravity="center"
+        android:drawablePadding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/textViewHeader"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp"/>
+
+    <!-- Temporada -->
+
+    <TextView
+        android:id="@+id/textViewTemporada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="T10: E08"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/textViewNomeSerie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Imagem após texto da temporada -->
+
+    <ImageView
+        android:id="@+id/imageViewTemporadaImagem"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/serie1"
+        app:layout_constraintTop_toBottomOf="@id/textViewTemporada"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp" />
+
+    <!-- SeekBar abaixo da imagem -->
+
+    <SeekBar
+        android:id="@+id/seekBarSeries"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:progressTint="@android:color/white"
+        android:thumbTint="@color/color_detalhes"
+        app:layout_constraintTop_toBottomOf="@id/imageViewTemporadaImagem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Imagem player -->
+
+    <ImageView
+        android:id="@+id/imageViewPlayer"
+        android:layout_width="237dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="48dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_player_series"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seekBarSeries"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <!-- Footer com os botões Anterior/Próximo -->
+
+    <LinearLayout
+        android:id="@+id/footerButtons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/buttonAcaoAnterior"
+            android:layout_width="@dimen/button_width_paginas"
+            android:layout_height="wrap_content"
+            android:text="Anterior"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/buttonAcaoProximo"
+            android:layout_width="@dimen/button_width_paginas"
+            android:layout_height="wrap_content"
+            android:text="Próximo"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

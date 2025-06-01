@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         };
 
         for (Button botao : botoesNumericos) {
-            botao.setOnClickListener(this);
+            botao.setOnClickListener(this); // detecta click
         }
 
         soma.setOnClickListener(this);
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void IniciarComponentes() {
-        numeroZero = findViewById(R.id.numero_zero); // ligações
+        numeroZero = findViewById(R.id.numero_zero); // busca e ligações
         numeroUm = findViewById(R.id.numero_um);
         numeroDois = findViewById(R.id.numero_dois);
         numeroTres = findViewById(R.id.numero_tres);

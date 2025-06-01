@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">ConstraintLayouts</string>
-    <string name="button_blog_post">button_blog_post</string>
+    <string name="button_blog_post">Blog Post</string>
 </resources>
