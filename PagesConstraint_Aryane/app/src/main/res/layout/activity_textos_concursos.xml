@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TextosConcursoActivity">
+
+    <ScrollView
+        android:id="@+id/scrollViewContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@id/layoutBotoes"
+        android:layout_alignParentTop="true"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Cabeçalho -->
+
+            <TextView
+                android:id="@+id/textViewHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_cabeçalho"
+                android:padding="16dp"
+                android:text="@string/text_cabeçalho_textos"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Título Escolha -->
+
+            <TextView
+                android:id="@+id/textViewTextTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Escolha o melhor Texto:"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewHeader" />
+
+            <!-- Texto Coluna 1 -->
+
+            <TextView
+                android:id="@+id/textViewColumn1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:padding="16dp"
+                android:text="@string/text_concurso_textos"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/textViewColumn2"
+                app:layout_constraintTop_toBottomOf="@id/textViewTextTitle"
+                app:layout_constraintHorizontal_chainStyle="spread" />
+
+            <!-- Texto Coluna 2 -->
+
+            <TextView
+                android:id="@+id/textViewColumn2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:padding="16dp"
+                android:text="@string/text_concurso_textos"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/textViewColumn1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewTextTitle" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <!-- Botões voto Usuário -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutBotoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/footerButtons"
+        android:layout_alignParentBottom="false">
+
+        <Button
+            android:id="@+id/buttonEsquerda"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Esquerda"
+            android:backgroundTint="@color/color_footer"
+            app:layout_constraintEnd_toStartOf="@id/buttonEmpate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:id="@+id/buttonEmpate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Empate"
+            android:backgroundTint="@color/color_footer"
+            app:layout_constraintEnd_toStartOf="@id/buttonDireita"
+            app:layout_constraintStart_toEndOf="@id/buttonEsquerda"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonDireita"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Direita"
+            android:backgroundTint="@color/color_footer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/buttonEmpate"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Footer com os botões Anterior/Próximo -->
+
+    <LinearLayout
+
+        android:id="@+id/footerButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+        <Button
+            android:id="@+id/buttonAcaoAnterior"
+            android:layout_width="@dimen/button_width_paginas"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Anterior" />
+
+        <Button
+            android:id="@+id/buttonAcaoProximo"
+            android:layout_width="@dimen/button_width_paginas"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Próximo" />
+
+    </LinearLayout>
+
+</RelativeLayout>
